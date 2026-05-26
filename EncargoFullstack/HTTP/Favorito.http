@@ -1,0 +1,38 @@
+### Configuración de Variables
+@url_base = http://localhost:8089/api/favoritos
+@producto_id = 8
+@favorito_id = 1
+
+### 1. Agregar un Producto a Favoritos
+# @name Agregar_Favorito
+POST {{url_base}}
+Content-Type: application/json
+
+{
+  "usuario": "diego",
+  "productoId": {{producto_id}}
+}
+
+###
+
+### 2. Listar TODOS los Favoritos (Vista Admin)
+# @name Listar_Sistema_Completo
+GET {{url_base}}
+
+###
+
+### 3. Listar Favoritos de un Usuario Específico
+# @name Favoritos_Por_Usuario
+GET {{url_base}}/usuario/{{usuario}}
+
+###
+
+### 4. Ver quiénes tienen un producto en favoritos
+# @name Usuarios_Por_Producto
+GET {{url_base}}/producto/{{producto_id}}
+
+###
+
+### 5. Eliminar de Favoritos
+# @name Eliminar_Favorito
+DELETE {{url_base}}/{{favorito_id}}

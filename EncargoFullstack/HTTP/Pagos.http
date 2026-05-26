@@ -1,0 +1,18 @@
+@url_pago = http://localhost:8087
+@pedido_id = 3
+
+
+### Ver Pago por Pedido 
+GET {{url_pago}}/api/pagos/pedido/{{pedido_id}}
+
+
+### Procesar Pago 
+POST {{url_pago}}/api/pagos/procesar
+Content-Type: application/json
+
+{
+  "pedidoId": 3, 
+  "monto": 999.99,
+  "metodoPago": "TARJETA",
+  "estado": "PENDIENTE"
+}

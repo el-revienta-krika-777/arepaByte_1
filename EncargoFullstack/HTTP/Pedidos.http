@@ -1,0 +1,29 @@
+### Crear Pedido
+POST http://localhost:8085/api/pedidos
+Content-Type: application/json
+
+{
+  "productoId": 1,
+  "cliente": "ana",
+  "cantidad": 1
+}
+
+###
+
+### Listar Pedidos
+GET http://localhost:8085/api/pedidos
+
+###
+
+### Obtener Pedido por ID
+GET http://localhost:8085/api/pedidos/1
+
+###
+
+### Obtener Pedidos por Cliente
+GET http://localhost:8085/api/pedidos/cliente/ana
+
+###
+
+### Eliminar Pedido
+DELETE http://localhost:8085/api/pedidos/1

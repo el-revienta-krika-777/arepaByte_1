@@ -1,0 +1,14 @@
+@url_catalogo = http://localhost:8081
+
+### Listar Categorías
+# @name ListarCategorias
+GET {{url_catalogo}}/api/categorias
+
+> {%
+    client.test("Status 200 OK", function() {
+        client.assert(response.status === 200, "El estado de respuesta no es 200");
+    });
+    client.test("Response es un array", function() {
+        client.assert(Array.isArray(response.body), "La respuesta no es un array");
+    });
+%}

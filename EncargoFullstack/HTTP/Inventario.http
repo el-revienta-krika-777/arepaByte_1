@@ -1,0 +1,42 @@
+### Variables de Entorno (Asegúrate de tener definido url_inventario)
+@url_inventario = http://localhost:8082
+@id_producto = 1
+
+### 1. Obtener Todo el Stock
+GET {{url_inventario}}/api/inventario
+Accept: application/json
+
+###
+
+### 2. Obtener Stock por Producto
+GET {{url_inventario}}/api/inventario/producto/{{id_producto}}
+Accept: application/json
+
+###
+
+### 3. Crear Inventario
+POST {{url_inventario}}/api/inventario
+Content-Type: application/json
+
+{
+  "productoId": 9,
+  "stock": 115,
+  "stockMinimo": 10
+}
+
+###
+
+### 4. Aumentar Stock
+PATCH {{url_inventario}}/api/inventario/aumentar/{{id_producto}}?cantidad=1000
+Accept: application/json
+
+###
+
+### 5. Disminuir Stock
+PATCH {{url_inventario}}/api/inventario/disminuir/{{id_producto}}?cantidad=10
+Accept: application/json
+
+###
+
+### 6. Eliminar Inventario
+DELETE {{url_inventario}}/api/inventario/{{id_producto}}

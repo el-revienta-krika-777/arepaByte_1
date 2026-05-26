@@ -1,0 +1,81 @@
+@url_carrito = http://localhost:8084
+@url_catalogo = http://localhost:8081
+
+### 1. Crear Carrito. (Si es con usuario incluir '?usuario=usuario')
+# @name CrearCarrito
+POST {{url_carrito}}/api/carritos?usuario=invitado
+Content-Type: application/json
+
+> {%
+    client.test("Status 201 Created", function() {
+        client.assert(response.status === 201, "El estado no es 201");
+    });
+    client.test("Response tiene ID", function() {
+        client.assert(response.body.hasOwnProperty('id'), "Falta el ID en el carrito");
+    });
+    client.global.set("carrito_id", response.body.id);
+%}
+
+###
+
+### 2. Obtener Carrito por ID
+GET {{url_carrito}}/api/carritos/{{carrito_id}}
+
+> {%
+    client.test("Status 200 OK", function() {
+        client.assert(response.status === 200, "El estado no es 200");
+    });
+%}
+
+###
+
+### 3. Agregar Item al Carrito
+POST {{url_carrito}}/api/carritos/{{carrito_id}}/items
+Content-Type: application/json
+
+{
+  "productoId": 4,
+  "cantidad": 5
+}
+
+> {%
+    client.test("Status 200 OK - Conectividad OK", function() {
+        client.assert(response.status === 200, "Error en comunicación entre microservicios");
+    });
+    client.test("Carrito tiene items", function() {
+        client.assert(response.body.items.length > 0, "El carrito debería tener elementos");
+    });
+%}
+
+###
+
+### 4. Quitar Item del Carrito
+DELETE {{url_carrito}}/api/carritos/{{carrito_id}}/items/{{producto_id}}
+
+> {%
+    client.test("Status 200 OK", function() {
+        client.assert(response.status === 200);
+    });
+%}
+
+###
+
+### 5. Vaciar Carrito
+DELETE {{url_carrito}}/api/carritos/{{carrito_id}}/vaciar
+
+> {%
+    client.test("Status 200 OK", function() {
+        client.assert(response.status === 200);
+    });
+%}
+
+###
+
+### 6. Eliminar Carrito
+DELETE {{url_carrito}}/api/carritos/9/{{carrito_id}}
+
+> {%
+    client.test("Status 204 No Content", function() {
+        client.assert(response.status === 204);
+    });
+%}

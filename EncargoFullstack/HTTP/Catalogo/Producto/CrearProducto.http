@@ -1,0 +1,12 @@
+@url_catalogo = http://localhost:8081
+
+### Crear un Producto
+POST {{url_catalogo}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Plástico Reciclado",
+  "gtin": "PR-051", 
+  "precio": 3.00,
+  "categoriaId": 1
+}

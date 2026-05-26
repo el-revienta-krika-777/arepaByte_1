@@ -1,0 +1,22 @@
+@url_catalogo = http://localhost:8081
+
+### Crear Categoría
+# @name CrearCategoria
+POST {{url_catalogo}}/api/categorias
+Content-Type: application/json
+
+{
+  "nombre": "Agregue nombre",
+  "descripcion": "Agregue descripción"
+}
+
+###
+> {%
+client.test("Status 201 Created", function() {
+    client.assert(response.status === 201, "El estado de respuesta no es 201");
+});
+client.test("Response tiene ID", function() {
+    client.assert(response.body.hasOwnProperty('id'), "La respuesta no tiene la propiedad 'id'");
+});
+client.global.set("categoria_id", response.body.id);
+%}

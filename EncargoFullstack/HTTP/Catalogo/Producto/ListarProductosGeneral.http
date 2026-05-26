@@ -1,0 +1,17 @@
+@url_catalogo = http://localhost:8081
+### Listar Productos
+# @name ListarProductos
+GET {{url_catalogo}}/api/productos
+Accept: application/json
+
+> {%
+    client.test("Status 200 OK", function() {
+        client.assert(response.status === 200, "El estado de respuesta no es 200");
+    });
+
+    client.test("Response es un array", function() {
+        var type = typeof response.body;
+        // En REST Client, response.body ya suele venir parseado si es JSON
+        client.assert(Array.isArray(response.body), "La respuesta no es un array, se recibió: " + type);
+    });
+%}

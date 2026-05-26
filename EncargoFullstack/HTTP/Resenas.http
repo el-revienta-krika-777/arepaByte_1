@@ -1,0 +1,39 @@
+### Configuración de Variables
+@url_resenas = http://localhost:8083
+@productoId = 1
+@usuarioId = 2
+
+# @name Crear_Resena
+# Usando ResenaRequestDTO (Asegúrate de que los nombres coincidan con el DTO)
+POST {{url_resenas}}/api/resenas
+Content-Type: application/json
+
+{
+  "productoId": {{productoId}},
+  "usuarioId": {{usuarioId}},
+  "calificacion": 5,
+  "comentario": "Excelente producto, superó mis expectativas."
+}
+
+### Ver todas las reseñas
+GET {{url_resenas}}/api/resenas
+
+###
+
+# @name Listar_Por_Producto
+GET {{url_resenas}}/api/resenas/producto/{{productoId}}
+
+###
+
+# @name Obtener_Promedio
+GET {{url_resenas}}/api/resenas/producto/{{productoId}}/promedio
+
+###
+
+# @name Listar_Por_Usuario
+GET {{url_resenas}}/api/resenas/usuario/{{usuarioId}}
+
+###
+
+# @name Eliminar_Resena
+DELETE {{url_resenas}}/api/resenas/{{reseña_id}}

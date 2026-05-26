@@ -1,0 +1,19 @@
+@url_catalogo = http://localhost:8081
+@id = 1
+### Obtener Producto por ID
+# @name ObtenerProductoPorID
+GET {{url_catalogo}}/api/productos/{{id}}
+Accept: application/json
+
+> {%
+    // Endpoint consumido por: carrito (FeignClient), pedidos (FeignClient), favorito (WebClient)
+    
+    client.test("Status 200 OK", function() {
+        client.assert(response.status === 200, "El estado no es 200");
+    });
+
+    client.test("Response tiene ID", function() {
+        // Verificamos si la propiedad 'id' existe en el cuerpo de la respuesta
+        client.assert(response.body.hasOwnProperty('id'), "El objeto no contiene la propiedad 'id'");
+    });
+%}

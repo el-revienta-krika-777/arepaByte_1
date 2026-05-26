@@ -1,0 +1,12 @@
+@url_catalogo = http://localhost:8081
+@id = 1
+### Eliminar Producto
+# @name EliminarProducto
+DELETE {{url_catalogo}}/api/productos/{{id}}
+Content-Type: application/json
+
+> {%
+    client.test("Status 204 No Content", function() {
+        client.assert(response.status === 204, "El estado de respuesta no es 204");
+    });
+%}

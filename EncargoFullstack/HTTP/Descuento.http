@@ -1,0 +1,41 @@
+### Configuración de Variables
+@url_descuento = http://localhost:8086
+@cupon_codigo = VERANO2026
+
+# @name Crear_Cupon
+POST {{url_descuento}}/api/cupones
+Content-Type: application/json
+
+{
+  "codigo": "{{cupon_codigo}}",
+  "valor": 15.5,
+  "tipo": "PORCENTAJE",
+  "usoMaximo": 100,
+  "fechaExpiracion": "2026-12-31T23:59:59"
+}
+
+###
+
+# @name Listar_Todos_Los_Cupones
+GET {{url_descuento}}/api/cupones
+
+###
+
+# @name Ver_Detalle_Cupon_Especifico
+GET {{url_descuento}}/api/cupones/{{cupon_codigo}}
+
+###
+
+# @name Validar_Cupon
+POST {{url_descuento}}/api/cupones/validar
+Content-Type: application/json
+
+{
+  "codigo": "{{cupon_codigo}}",
+  "montoCarrito": 5000.0
+}
+
+###
+
+# @name Aplicar_Cupon
+PATCH {{url_descuento}}/api/cupones/{{cupon_codigo}}/aplicar

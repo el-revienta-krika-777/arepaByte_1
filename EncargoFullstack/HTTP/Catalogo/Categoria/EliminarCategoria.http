@@ -1,0 +1,11 @@
+@url_catalogo = http://localhost:8081
+
+### Eliminar Categoría
+# @name EliminarCategoria
+DELETE {{url_catalogo}}/api/categorias/5
+
+> {%
+    client.test("Status 204 No Content", function() {
+        client.assert(response.status === 204, "El estado de respuesta no es 204");
+    });
+%}

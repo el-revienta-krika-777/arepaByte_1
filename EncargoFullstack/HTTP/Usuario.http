@@ -1,0 +1,19 @@
+@usuario_id = 4
+
+POST http://localhost:8080/api/usuarios
+Content-Type: application/json
+
+{
+  "nombre": "sting2",
+  "email": "stinga@test.com",
+  "telefono": "123456789"
+}
+
+### Eliminar Usuario
+DELETE http://localhost:8080/api/usuarios/{{usuario_id}}
+
+### Listar Usuarios
+GET http://localhost:8080/api/usuarios
+
+### Obtener Usuario por ID
+GET http://localhost:8080/api/usuarios/{{usuario_id}}

@@ -1,0 +1,40 @@
+### Configuración de Variables
+@url_envios = http://localhost:8088/api/envios
+@pedido_id = 3
+@envio_id = 1
+
+### 1. Generar un nuevo Envío
+# @name Crear_Envio
+# Nota: Enviamos el pedidoId que existe en el micro de Pedidos
+POST {{url_envios}}/crear
+Content-Type: application/json
+
+{
+  "pedidoId": {{pedido_id}},
+  "direccionEntrega": "Av. Principal 123, Santiago",
+  "transportista": "DHL",
+  "estadoEnvio": "PREPARANDO"
+}
+
+###
+
+### 2. Rastrear Envío por ID de Pedido
+# @name Rastrear_Por_Pedido
+GET {{url_envios}}/pedido/{{pedido_id}}
+
+###
+
+### 3. Actualizar Estado del Envío (Logística)
+# @name Actualizar_Estado
+PATCH {{url_envios}}/{{envio_id}}/estado?nuevoEstado=EN_TRANSITO&seguimiento=TRACK-DHL-998877
+
+###
+
+### 4. Confirmar Entrega Final
+# @name Confirmar_Entrega
+PATCH {{url_envios}}/{{envio_id}}/estado?nuevoEstado=ENTREGADO
+
+### 5. Listar Todos los Envíos (Visión de Administrador)
+# @name Listar_Todo
+GET http://localhost:8088/api/envios
+Accept: application/json
