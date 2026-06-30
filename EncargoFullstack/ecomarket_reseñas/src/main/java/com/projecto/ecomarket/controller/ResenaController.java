@@ -6,11 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.projecto.ecomarket.dto.ResenaRequestDTO; // <--- Importamos el RequestDTO
+import com.projecto.ecomarket.dto.ResenaRequestDTO; 
 import com.projecto.ecomarket.dto.ResenaResponseDTO;
 import com.projecto.ecomarket.service.ResenaService;
 
-import jakarta.validation.Valid; // Para que las anotaciones @Min, @Max funcionen
+import jakarta.validation.Valid; 
 
 @RestController
 @RequestMapping("/api/resenas")
@@ -27,7 +27,6 @@ public class ResenaController {
         return ResponseEntity.ok(resenaService.obtenerTodas());
     }
 
-    // Ajustado para recibir ResenaRequestDTO
     @PostMapping
     public ResponseEntity<ResenaResponseDTO> crear(@Valid @RequestBody ResenaRequestDTO resenaDto) {
         return new ResponseEntity<>(resenaService.crearResena(resenaDto), HttpStatus.CREATED);

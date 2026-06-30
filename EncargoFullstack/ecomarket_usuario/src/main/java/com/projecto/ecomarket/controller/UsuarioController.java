@@ -14,17 +14,7 @@ import com.projecto.ecomarket.service.UsuarioService;
 
 import java.util.List;
 
-/**
- * UsuarioController
- *
- * Autor: Prof. Sting Parra Silva
- *
- * Expone la API REST de usuarios. El endpoint mas importante es
- * GET /api/usuarios/nombre/{nombre}, que es el que consumen
- * carrito, pedidos y favoritos para verificar que el usuario existe.
- *
- * Los demas endpoints son de administracion: listar, crear y eliminar usuarios.
- */
+
 @Tag(name = "Usuarios", description = "Registro de usuarios del sistema. Endpoint GET /nombre/{nombre} es consumido por carrito, pedidos y favoritos para validar que el usuario existe.")
 @RestController
 @RequestMapping("/api/usuarios")
@@ -49,7 +39,7 @@ public class UsuarioController {
 
     @Operation(
         summary = "Buscar usuario por nombre",
-        description = "Endpoint que consumen codigoms-carrito (FeignClient), codigoms-pedidos (FeignClient) y codigoms-favoritos (WebClient) para validar que el usuario existe antes de registrar una operacion. Devuelve 404 si el nombre no existe."
+        description = "Endpoint que consumen carrito (FeignClient), pedidos (FeignClient) y favoritos (WebClient) para validar que el usuario existe antes de registrar una operacion. Devuelve 404 si el nombre no existe."
     )
     @GetMapping("/nombre/{nombre}")
     public ResponseEntity<UsuarioResponseDTO> buscarPorNombre(

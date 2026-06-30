@@ -13,9 +13,9 @@
     </parent>
 
     <groupId>com.projecto</groupId>
-    <artifactId>ecomarket</artifactId>
+    <artifactId>ecomarket_pago</artifactId>
     <version>1.0.0</version>
-    <name>ecomarket</name>
+    <name>ecomarket_pago</name>
     <description>Microservicio de pagos</description>
 
     <properties>
@@ -60,6 +60,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>2.4.2</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <dependencyManagement>

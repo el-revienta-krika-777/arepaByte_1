@@ -12,19 +12,6 @@ import com.projecto.ecomarket.repository.UsuarioRepository;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * UsuarioService
- *
- * Autor: Prof. Sting Parra Silva
- *
- * Logica de negocio del registro de usuarios.
- * Los otros microservicios no acceden a esta base de datos directamente:
- * llaman al endpoint GET /api/usuarios/nombre/{nombre} por HTTP
- * y este servicio les responde si el usuario existe o no.
- *
- * Es el mismo patron que LibroService en codigoms-catalogo,
- * aplicado al dominio de usuarios.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor

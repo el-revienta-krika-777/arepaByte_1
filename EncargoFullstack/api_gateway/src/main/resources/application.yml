@@ -1,0 +1,87 @@
+spring:
+  application:
+    name: ecomarket-gateway
+  cloud:
+    gateway:
+      routes:
+
+        # ecomarket-usuario → puerto 8080
+        - id: usuario-route
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/usuarios/**
+
+        # ecomarket-carrito → puerto 8083
+        - id: carrito-route
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/carrito/**
+
+        # ecomarket-productos → puerto 8081
+        - id: catalogo-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/productos/**
+
+        # ecomarket-productos → puerto 8081
+        - id: categoria-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/categoria/**
+
+        # ecomarket-inventario → puerto 8082
+        - id: inventario-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/inventario/**
+
+        # codigecomarketoms-resenas → puerto 8083
+        - id: resena-route
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/resenas/**   
+
+        # ecomarket-resenas → puerto 8083
+        - id: pedidos-route
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/resenas/** 
+
+        # ecomarket-resenas → puerto 8083
+        - id: descuento-route
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/cupones/** 
+
+        # ecomarket-resenas → puerto 8083
+        - id: pagos-route
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/pagos/**  
+
+        # ecomarket-envios → puerto 8083
+        - id: envios-route
+          uri: http://localhost:8088
+          predicates:
+            - Path=/api/envios/**  
+
+        # ecomarket-favoritos → puerto 8083
+        - id: favoritos-route
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/favoritos/**  
+server:
+  port: 9000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, gateway
+  endpoint:
+    gateway:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO

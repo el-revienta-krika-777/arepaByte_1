@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EcomarketApplication<com.projecto-ecomarket>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.projecto.ecomarket.EcomarketApplication",
+            "projectName": "com.projecto-ecomarket",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EcomarketApplication<com.sting-codigoms_favoritos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.projecto.ecomarket.EcomarketApplication",
+            "projectName": "com.sting-codigoms_favoritos",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EcomarketApplication<ecomarket_carrito>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.projecto.ecomarket.EcomarketApplication",
+            "projectName": "ecomarket_carrito",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayApplication<api_gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.projecto.ecomarket.api_gateway.ApiGatewayApplication",
+            "projectName": "api_gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

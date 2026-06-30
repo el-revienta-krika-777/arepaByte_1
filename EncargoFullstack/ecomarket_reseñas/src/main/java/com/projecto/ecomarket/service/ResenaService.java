@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j // Agregado para poder ver errores en consola si falla la comunicación
+@Slf4j 
 public class ResenaService {
 
     private final ResenaRepository resenaRepository;
@@ -49,7 +49,7 @@ public class ResenaService {
     }
 
     /**
-     * Este método ahora "enriquece" el DTO llamando al microservicio de Usuarios
+     * Este método "enriquece" el DTO llamando al microservicio de Usuarios
      */
     private ResenaResponseDTO mapToDTO(Resena resena) {
         String nombreEncontrado = "Usuario no disponible";
@@ -69,7 +69,7 @@ public class ResenaService {
                 .id(resena.getId())
                 .productoId(resena.getProductoId())
                 .usuarioId(resena.getUsuarioId())
-                .nombreUsuario(nombreEncontrado) // <--- Aquí asignamos el nombre obtenido
+                .nombreUsuario(nombreEncontrado) 
                 .calificacion(resena.getCalificacion())
                 .comentario(resena.getComentario())
                 .fecha(resena.getFechaCreacion() != null ? resena.getFechaCreacion().toString() : LocalDateTime.now().toString())
